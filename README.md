@@ -5,7 +5,7 @@
 2. Take the hasura url and add it to the gqty.config.cjs file and replace HASURA_URL in .env file.
 3. Go to https://randomkeygen.com/ and take a strong password from there and replace COOKIE_SECRET in .env
 4. Go to https://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx and create a 256 bit encryption key and replace JWT_SECRET in .env .
-5. Go to hasura env vars, Hasura -> Projects -> Settings Icon -> Env vars and create a key called HASURA_GRAPHQL_JWT_SECRET, and in the value type 
+5. Go to hasura env vars, Hasura -> Projects -> Settings Icon -> Env vars and create a key called HASURA_GRAPHQL_JWT_SECRET, and in the value create an object with your key and the jwt type.
 ```
 {
     "key": "your key",
