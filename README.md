@@ -12,5 +12,5 @@
     "type": "HS256"
 }
 ```
-6. Go to Hasura -> Your project -> Data and schema managment -> Create a new Database -> Go to Neon Database -> Log in with Hasura -> Create the database.
-<sub> You can only create one database on free tier. </sub>
+6. Go to Hasura -> Your project -> Data and schema managment -> Create a new Database -> Go to Neon Database -> Log in with Hasura -> Create the database. (You can only create one database on free tier)
+7. Your ready to go, create your schema and when you are done use yarn generate or npm generate in your console in github!
