@@ -1,14 +1,28 @@
 import { createCookieSessionStorage } from "@remix-run/node";
+import { env } from "./env.server";
 
-export let sessionStorage = createCookieSessionStorage({
-  cookie: {
-    name: "_session",
-    sameSite: "lax",
-    path: "/",
-    httpOnly: true, // for security reasons, make this cookie http only
-    secrets: [process.env.COOKIE_SECRET! as string], // replace this with an actual secret
-    secure: process.env.NODE_ENV === "production",
-  },
+export type User = {
+  id: string | null;
+  email: string;
+  name: string;
+  token: string;
+};
+
+type Cookie = NonNullable<
+  Required<Parameters<typeof createCookieSessionStorage>[0]>
+>["cookie"];
+
+const cookie = (name: string): Cookie => ({
+  name,
+  sameSite: "lax",
+  path: "/",
+  httpOnly: true,
+  secrets: [env.COOKIE_SECRET],
+  secure: process.env.NODE_ENV === "production",
 });
 
-export let { getSession, commitSession, destroySession } = sessionStorage;
+export const sessionStore = createCookieSessionStorage({
+  cookie: cookie("_session"),
+});
+
+export const { getSession, commitSession, destroySession } = sessionStore;

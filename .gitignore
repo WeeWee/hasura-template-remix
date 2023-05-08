@@ -1,1 +1,10 @@
 node_modules
+
+.cache
+.env
+.vercel
+.output
+.DS_Store
+/app/_gql
+/build/
+/public/build

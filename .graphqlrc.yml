@@ -1,0 +1,28 @@
+schema:
+  - ${HASURA_URL}:
+      headers:
+        x-hasura-admin-secret: ${HASURA_SECRET}
+documents:
+  - "app/**/*.{graphql,ts,tsx}"
+  - "!app/_gql/**/*.{graphql,ts,tsx}"
+ignoreNoDocuments: true
+generates:
+  ./app/_gql/:
+    preset: client
+    presetConfig:
+      fragmentMasking: false
+    config:
+      dedupeFragments: true
+      useTypeImports: true
+      skipTypename: true
+      enumsAsTypes: true
+      scalars:
+        bigint: number
+        uuid: string
+        date: string
+        time: string
+        daterange: string
+        timestamptz: string
+extensions:
+  languageService:
+    cacheSchemaFileForLookup: true
